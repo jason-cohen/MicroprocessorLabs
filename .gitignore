@@ -19,3 +19,17 @@
 *.app
 
 ## Assembly ignore file types ##
+
+._ia
+.axf
+.bak
+.d
+.dep
+.html
+.map
+.lnp
+.lst
+.plg
+.tra
+.uvopt
+.sct
