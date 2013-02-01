@@ -1,0 +1,3 @@
+Dependencies for Project 'project', Target 'Target ': (DO NOT MODIFY !)
+F (.\src\startup_stm32f4xx.s)(0x505367E6)(--cpu Cortex-M4.fp -g --apcs=interwork -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F4xx --list ".\lst\startup_stm32f4xx.lst" --xref -o ".\obj\startup_stm32f4xx.o" --depend ".\obj\startup_stm32f4xx.d")
+F (.\src\main.c)(0x50536878)(-c --cpu Cortex-M4.fp -I"C:\Keil\ARM\RL\include" -g -O0 --apcs=interwork -I.\src --c99 -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F4xx -o ".\obj\main.o" --omf_browse ".\obj\main.crf" --depend ".\obj\main.d")

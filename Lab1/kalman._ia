@@ -1,0 +1,4 @@
+--cpu Cortex-M4.fp -g --apcs=interwork 
+-I C:\Keil\ARM\CMSIS\Include 
+-I C:\Keil\ARM\Inc\ST\STM32F4xx 
+--list "kalman.lst" --xref -o "kalman.o" --depend "kalman.d" "kalman.s"
