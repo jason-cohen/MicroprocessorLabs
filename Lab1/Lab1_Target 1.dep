@@ -1,3 +1,0 @@
-Dependencies for Project 'Lab1', Target 'Target 1': (DO NOT MODIFY !)
-F (.\startup_stm32f4xx.s)(0x510B040D)(--cpu Cortex-M4.fp -g --apcs=interwork -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F4xx --list "startup_stm32f4xx.lst" --xref -o "startup_stm32f4xx.o" --depend "startup_stm32f4xx.d")
-F (.\kalman.s)(0x510B02B0)(--cpu Cortex-M4.fp -g --apcs=interwork -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F4xx --list "kalman.lst" --xref -o "kalman.o" --depend "kalman.d")
