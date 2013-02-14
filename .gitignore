@@ -27,8 +27,11 @@
 *.d
 *.dep
 *.hex
+*.home
+*.htm
 *.html
 *.iex
+*.jason
 *.lnp
 *.lst
 *.map
