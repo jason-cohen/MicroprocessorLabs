@@ -27,6 +27,8 @@
 *.d
 *.dep
 *.hex
+*.home
+*.htm
 *.html
 *.iex
 *.lnp
