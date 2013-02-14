@@ -18,18 +18,21 @@
 *.out
 *.app
 
-## Assembly ignore file types ##
+## Project file types ##
 
-._ia
-.axf
-.bak
-.d
-.dep
-.html
-.map
-.lnp
-.lst
-.plg
-.tra
-.uvopt
-.sct
+*._ia
+*.axf
+*.bak
+*.crf
+*.d
+*.dep
+*.hex
+*.html
+*.iex
+*.lnp
+*.lst
+*.map
+*.plg
+*.tra
+*.uvopt
+*.sct
