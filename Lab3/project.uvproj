@@ -348,7 +348,7 @@
             <uSurpInc>0</uSurpInc>
             <VariousControls>
               <MiscControls>--c99</MiscControls>
-              <Define></Define>
+              <Define>HSE_VALUE=8000000 USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
               <IncludePath>.\src;.\STM32F4xx_StdPeriph_Driver\inc;.\LIS302DL\inc</IncludePath>
             </VariousControls>

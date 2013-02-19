@@ -11,6 +11,5 @@ void initNVIC_TIM3(void);		// Timer interrupt handler
 void initNVIC_EXTI0(void);	// Click interrupt handler
 void initTIM3(void);				// Timer setup config
 void initEXTI0(void);				// External interrupt config
-void initGPIOIntPort(void);	// GPIO interrupt mapping config
 
 #endif // __TIMERINTERRUPT_H_

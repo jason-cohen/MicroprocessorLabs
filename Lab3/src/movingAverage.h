@@ -1,7 +1,7 @@
 #ifndef __MOVINGAVERAGE_H_
 #define __MOVINGAVERAGE_H_
 
-#define d 5
+#define d 20
 
 // Struct definition
 typedef struct {

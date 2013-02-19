@@ -14,7 +14,7 @@ void initNVIC_TIM3() {
 	NVIC_Init(&NVIC_InitStruct);
 }
 
-// Must be called before the click interrupt initialization
+// Must be called after the click EXTI interrupt initialization
 void initNVIC_EXTI0() {
 	NVIC_InitTypeDef NVIC_InitStruct;
 	
@@ -77,20 +77,4 @@ void initEXTI0() {
 	
 }
 
-void initGPIOIntPort() {
-	
-	GPIO_InitTypeDef GPIO_InitStruct;
-	
-	/* Enable GPIOE clock */
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
-	
-	/* Enable the GPIO */
-	// Connect the GPIO pin to the accelerometer interrupt wire
-	GPIO_InitStruct.GPIO_Pin = LIS302DL_SPI_INT1_PIN;
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
-	GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
-	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;
-	GPIO_InitStruct.GPIO_PuPd  = GPIO_PuPd_NOPULL;
-	GPIO_Init(LIS302DL_SPI_INT1_GPIO_PORT, &GPIO_InitStruct);
-}
 
