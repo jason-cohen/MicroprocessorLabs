@@ -4,15 +4,15 @@
 #include "stm32f4_discovery_lis302dl.h"
 #include "math.h"
 #include "movingAverage.h"
-#include "timerInterrupt.h"
+#include "interrupts.h"
 #include "ACC.h"
-#include "GPIO.h"
+#include "LEDs.h"
 
 #define CALIB_ACC 0
 #define RUN_GPIO 1
 #define RUN_ACC 1
 #define RUN_TIM 1
-#define RUN_ACC_EXTI 0
+#define RUN_ACC_CLICK 1
 #define RUN_MOV_AVG 1
 
 #define NUM_AXES 3
@@ -28,9 +28,7 @@ float alphaAngle, betaAngle;
 movAvgState movAvgStateStruct[NUM_AXES];
 uint8_t count = 0;
 
-static uint8_t runACC = 0;
-
-
+uint8_t runACC = 0;
 
 
 // Acquired during the calibration testing
@@ -47,20 +45,23 @@ int main() {
 // 	return 0;
 	// Run setups based on debugging settings
 #if RUN_GPIO 
-    initGPIO();
+	initGPIOD_LED();
 #endif
     
 #if RUN_TIM
-    initNVIC();
-    initTIM3();
+  initNVIC_TIM3();
+	initTIM3();
 #endif
     
+#if RUN_ACC_CLICK 
+  initAccClickInterrupt();
+	initGPIOIntPort();
+	initNVIC_EXTI0();
+	initEXTI0();
+#endif    
+
 #if RUN_ACC || CALIB_ACC
-    initAcc();
-#endif
-    
-#if RUN_ACC_EXTI 
-    initAccClickInterrupt();
+	initAcc();
 #endif
     
 #if RUN_MOV_AVG
@@ -76,18 +77,14 @@ int main() {
         printf("X:%d\tY:%d\tZ:%d\n", accData[0], accData[1], accData[2]);
     }
 #else
-    while (1) {
-			Delay(0x7FFFF);	// wait for approx. 10 ms.
-                    
-#if RUN_GPIO
-//                 toggleLED();            
-#endif
-        
+    while (1) {        
 #if RUN_ACC
-			LIS302DL_ReadACC(accData);
-			calibrateData();
-			calculateAngles();
-			
+			if (runACC) {
+				runACC = 1 - runACC;
+				LIS302DL_ReadACC(accData);
+				calibrateData();
+				calculateAngles();
+			}
 #endif
     }
 #endif
@@ -135,22 +132,14 @@ void TIM3_IRQHandler() {
   if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET) {
     TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
 		runACC = 1 - runACC;
-		
-#if RUN_GPIO
-		if (++count == 100) {
-			count = 0;
-			toggleLED();            
-		}
-#endif
-    
-#if RUN_ACC || CALIB_ACC
-//     calibrateData();
-// 		calculateAngles();
-// 		
-//     printf("RAW:\tX:%f\tY:%f\tZ:%f\n", accData[0]/1000.0, accData[1]/1000.0, accData[2]/1000.0);
-//     printf("CAL:\tX:%f\tY:%f\tZ:%f\n", calibratedData[0], calibratedData[1], calibratedData[2]);
-// 		printf("ANGLE:\ta:%f\tb:%f\n", alphaAngle, betaAngle);
-// 		printf("--------------------------------------------------\n");
-#endif
   }
+}
+
+void EXTI0_IRQHandler() {
+	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
+		EXTI_ClearITPendingBit(EXTI_Line0);
+#if RUN_GPIO
+		toggleLED();
+#endif
+	}
 }

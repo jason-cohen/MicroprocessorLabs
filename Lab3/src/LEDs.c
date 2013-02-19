@@ -1,8 +1,8 @@
-#include "GPIO.h"
+#include "LEDs.h"
 
 
 
-void initGPIO() {
+void initGPIOD_LED() {
     
 	// GPIO clock setup
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);

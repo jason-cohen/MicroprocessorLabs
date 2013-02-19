@@ -8,5 +8,6 @@
 
 void initAcc(void);
 void initAccClickInterrupt(void);
+void clickConfig(void);
 	
 #endif // __ACC_H
