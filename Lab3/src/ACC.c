@@ -17,7 +17,7 @@ void initAcc() {
 	LIS302DL_InitStruct.Power_Mode = LIS302DL_LOWPOWERMODE_ACTIVE;  // Use low-power mode
 	LIS302DL_InitStruct.Output_DataRate = LIS302DL_DATARATE_100;    // Sample at 100Hz
 	LIS302DL_InitStruct.Axes_Enable = LIS302DL_X_ENABLE | LIS302DL_Y_ENABLE | LIS302DL_Z_ENABLE;    // Enable all 3 sensors (x, y, z)
-	LIS302DL_InitStruct.Full_Scale = LIS302DL_FULLSCALE_2_3;
+	LIS302DL_InitStruct.Full_Scale = LIS302DL_FULLSCALE_2_3;				// Scale on 2G's
 	LIS302DL_InitStruct.Self_Test = LIS302DL_SELFTEST_NORMAL;
 	
 	LIS302DL_Init(&LIS302DL_InitStruct); // Actually initialize the accelerometer
@@ -41,7 +41,7 @@ void initAccClickInterrupt() {
 	// Setup interrupt using specifications
 	LIS302DL_InterruptConfig(&LIS302DL_InterruptConfigStruct);
 	
-	/* Configure Click Threshold on X/Y axis (15 x 0.5g) */
+	/* Configure Click Threshold on X/Y axis (15 x 0.5g) */	
 	ctrl = 0xFF;
 	LIS302DL_Write(&ctrl, LIS302DL_CLICK_THSY_X_REG_ADDR, 1);
 

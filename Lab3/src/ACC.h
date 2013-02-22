@@ -18,9 +18,19 @@ extern float calibratedData[NUM_AXES];
 // Acquired during the calibration testing
 extern const float calibrationACC[3][4];
 
-/* Function prototypes */
+/**
+ * Initializes ACC.
+*/
 void initAcc(void);
+
+/**
+ * Initializes the click interrupt.
+*/
 void initAccClickInterrupt(void);
+
+/**
+ * Calibrates the data from offline measurements.
+*/
 void calibrateData(void);
 	
 #endif // __ACC_H

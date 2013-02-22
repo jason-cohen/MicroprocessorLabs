@@ -6,12 +6,12 @@
 void initNVIC_TIM3() {
 	NVIC_InitTypeDef NVIC_InitStruct;
 	
-	NVIC_InitStruct.NVIC_IRQChannel = TIM3_IRQn;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
-	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_InitStruct.NVIC_IRQChannel = TIM3_IRQn;								// Maps interrupt handler to timer 3
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;		// Sets highest priority interrupt (0 highest)
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;					// Sets sub priority
+	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;								// Enable channel
 	
-	NVIC_Init(&NVIC_InitStruct);
+	NVIC_Init(&NVIC_InitStruct);																// Passes in the initialization parameters
 }
 
 // Must be called after the click EXTI interrupt initialization
@@ -20,18 +20,18 @@ void initNVIC_EXTI0() {
 	
 	/* Enable and set EXTI Line0 Interrupt to the lowest priority */
 	// interrupt handler
-	NVIC_InitStruct.NVIC_IRQChannel = EXTI0_IRQn;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x01;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
-	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_InitStruct.NVIC_IRQChannel = EXTI0_IRQn;								// Maps interrupt handler to EXTI0
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x01;   // Sets priority to number 2 (1 = second highest)
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;  				// Sets sub priority
+	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;								// Enable channel
 	
-	NVIC_Init(&NVIC_InitStruct);
+	NVIC_Init(&NVIC_InitStruct);																// Passes in the initialization parameters
 }
 
 
 void initTIM3() {
 	// Configuration structure declaration
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStruct;
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStruct;									
 	
 	// Setup TIM3 to operate on the APB1 clock at 84 MHz
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
