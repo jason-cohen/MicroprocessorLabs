@@ -432,16 +432,6 @@
               <FilePath>.\src\ACC.h</FilePath>
             </File>
             <File>
-              <FileName>GPIO.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\GPIO.c</FilePath>
-            </File>
-            <File>
-              <FileName>GPIO.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\GPIO.h</FilePath>
-            </File>
-            <File>
               <FileName>movingAverage.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\movingAverage.c</FilePath>
@@ -452,14 +442,24 @@
               <FilePath>.\src\movingAverage.h</FilePath>
             </File>
             <File>
-              <FileName>timerInterrupt.c</FileName>
+              <FileName>interrupts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\timerInterrupt.c</FilePath>
+              <FilePath>.\src\interrupts.c</FilePath>
             </File>
             <File>
-              <FileName>timerInterrupt.h</FileName>
+              <FileName>interrupts.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\timerInterrupt.h</FilePath>
+              <FilePath>.\src\interrupts.h</FilePath>
+            </File>
+            <File>
+              <FileName>LEDs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\LEDs.h</FilePath>
+            </File>
+            <File>
+              <FileName>LEDs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\LEDs.c</FilePath>
             </File>
           </Files>
         </Group>
