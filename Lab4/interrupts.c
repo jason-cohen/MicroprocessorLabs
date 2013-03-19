@@ -28,20 +28,15 @@ void initNVIC_EXTI0() {
 	NVIC_Init(&NVIC_InitStruct);																// Passes in the initialization parameters
 }
 
-// Must be called after the click EXTI interrupt initialization
-void initNVIC_EXTI1() {
-	NVIC_InitTypeDef NVIC_InitStruct;
-	
-	/* Enable and set EXTI Line0 Interrupt to the lowest priority */
-	// interrupt handler
-	NVIC_InitStruct.NVIC_IRQChannel = EXTI1_IRQn;								// Maps interrupt handler to EXTI1
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;   // Sets priority to number 2 (1 = second highest)
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;  				// Sets sub priority
-	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;								// Enable channel
-	
-	NVIC_Init(&NVIC_InitStruct);																// Passes in the initialization parameters
+void initNVIC_DMA2() {
+  NVIC_InitTypeDef NVIC_InitStructure;
+	// enable the interrupt in the NVIC
+  NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream0_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init (&NVIC_InitStructure);
 }
-
 
 void initTIM3() {
 	// Configuration structure declaration
@@ -89,20 +84,4 @@ void initEXTI0() {
 	EXTI_InitStruct.EXTI_LineCmd = ENABLE;
 	EXTI_Init(&EXTI_InitStruct);
 	
-}
-
-void initEXTI1() {
-	EXTI_InitTypeDef   EXTI_InitStructure;
-
-	/* Enable SYSCFG clock */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
-	
-	/* Connect EXTI Line1 to interrupt pin */
-	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA,EXTI_PinSource1);
-	
-	EXTI_InitStructure.EXTI_Line = EXTI_Line1;
-	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
-	EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-	EXTI_Init(&EXTI_InitStructure);
 }

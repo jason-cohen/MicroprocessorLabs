@@ -1,0 +1,17 @@
+    //prepare TxBuffer to transfer
+    spi1TxBuffer[0] = OUT_X_ADDR|READ_INCREMENT_ADDR;
+    spi1TxBuffer[1] = DUMMY_BYTE;spi1TxBuffer[2] = DUMMY_BYTE;
+    spi1TxBuffer[3] = DUMMY_BYTE;spi1TxBuffer[4] = DUMMY_BYTE;
+    spi1TxBuffer[5] = DUMMY_BYTE;spi1TxBuffer[6] = DUMMY_BYTE;
+    
+    //set up buffer size
+    DMA_Spi1TxStruct.DMA_BufferSize = (uint32_t)7;
+    DMA_Spi1RxStruct.DMA_BufferSize = (uint32_t)7;
+    DMA_Init(DMA2_Stream3, &DMA_Spi1TxStruct);     //Re-configure Tx DMA
+    DMA_Init(DMA2_Stream2, &DMA_Spi1RxStruct);    //Re-configure Rx DMA
+    
+    // Set chip select Low at the start of the transmission ; this bit will be set in    SPI-RX interrupt after receiver end
+    GPIO_ResetBits(GPIOE, GPIO_Pin_3);     
+    //ENABLE DMA SPI TX-RX
+    DMA_Cmd(DMA2_Stream3, ENABLE);         //TX
+    DMA_Cmd(DMA2_Stream2, ENABLE);         //RX

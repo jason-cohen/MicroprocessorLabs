@@ -58,10 +58,12 @@ void calculateAngles(void);
  * Y measured: movAvgStateStruct[1].avg
  */
 void determineMovement(void);
+
 /*!
  @brief Thread to perform menial tasks such as switching LEDs
  @param argument Unused
  */
+ 
 void threadTempSense(void const * argument);
 void threadACC(void const *argument);
 

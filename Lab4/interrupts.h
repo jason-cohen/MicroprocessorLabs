@@ -17,9 +17,9 @@ void initNVIC_TIM3(void);		// Timer interrupt handler
 void initNVIC_EXTI0(void);	// Click interrupt handler
 
 /**
- * Initializes the interrupt handler for button press
+ * Initializes the interrupt handler for DMA completion
 */
-void initNVIC_EXTI1(void);	// Button interrupt handler
+void initNVIC_DMA2(void);	// DMA interrupt handler
 
 /**
  * Initializes timer 3 to operate at 100hz
@@ -30,10 +30,5 @@ void initTIM3(void);				// Timer setup config
  * Initializes the GPIOE to link to external triggered interrupt.
 */
 void initEXTI0(void);				// External interrupt config
-
-/**
- * Initializes the GPIOA to link to external triggered interrupt.
-*/
-void initEXTI1(void);				// External interrupt config
 
 #endif // __TIMERINTERRUPT_H_
