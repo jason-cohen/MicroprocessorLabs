@@ -232,7 +232,7 @@
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
             <Im1Chk>1</Im1Chk>
-            <Im2Chk>1</Im2Chk>
+            <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
                 <Type>0</Type>
@@ -520,6 +520,21 @@
               <FileName>adc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_abs_f32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CMSIS\DSP_Lib\Source\BasicMathFunctions\arm_abs_f32.c</FilePath>
+            </File>
+            <File>
+              <FileName>arm_sin_f32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CMSIS\DSP_Lib\Source\FastMathFunctions\arm_sin_f32.c</FilePath>
+            </File>
+            <File>
+              <FileName>arm_cos_f32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CMSIS\DSP_Lib\Source\FastMathFunctions\arm_cos_f32.c</FilePath>
             </File>
           </Files>
         </Group>
